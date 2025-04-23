@@ -1,0 +1,8 @@
+root = true
+
+indent_style = space
+indent_size = 40
+max_line_length = 1000
+
+[*.php]
+php_diagnostic_php6606 = false

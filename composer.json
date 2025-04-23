@@ -1,0 +1,90 @@
+{
+    "name": "uab/intranet-v4-skeleton",
+    "type": "project",
+    "description": "Intranet UAb (v4) Skeleton",
+    "homepage": "https://uab.pt",
+    "license": "GPLv3",
+    "require": {
+        "php": "^8.1",
+        "ext-bcmath": "*",
+        "ext-curl": "*",
+        "ext-gd": "*",
+        "ext-imagick": "*",
+        "ext-intl": "*",
+        "ext-ldap": "*",
+        "ext-mbstring": "*",
+        "ext-pdo": "*",
+        "ext-redis": "*",
+        "ext-soap": "*",
+        "ext-xml": "*",
+        "ext-zip": "*",
+        "apereo/phpcas": "^1.6",
+        "codeigniter4/framework": "=4.6.0",
+        "codeigniter4/queue": "dev-develop",
+        "codeigniter4/shield": "^1.0.1",
+        "codeigniter4/tasks": "dev-develop",
+        "codeigniter4/translations": "^4.4",
+        "directorytree/ldaprecord": "^3.3",
+        "fakerphp/faker": "^1.23",
+        "firebase/php-jwt": "^6.10",
+        "halaxa/json-machine": "^1.2",
+        "onelogin/php-saml": "^4.1",
+        "phpmailer/phpmailer": "^6.7",
+        "robrichards/wse-php": "^2.0",
+        "robrichards/xmlseclibs": "^3.1",
+        "symfony/html-sanitizer": "^6.4",
+        "tecnickcom/tcpdf": "^6.6",
+        "twig/intl-extra": "^3.7",
+        "twig/twig": "^3.0"
+    },
+    "suggest": {
+        "ext-curl": "If you use CURLRequest class",
+        "ext-dom": "If you use TestResponse",
+        "ext-exif": "If you run Image class tests",
+        "ext-fileinfo": "Improves mime type detection for files",
+        "ext-gd": "If you use Image class GDHandler",
+        "ext-imagick": "If you use Image class ImageMagickHandler",
+        "ext-libxml": "If you use TestResponse",
+        "ext-memcache": "If you use Cache class MemcachedHandler with Memcache",
+        "ext-memcached": "If you use Cache class MemcachedHandler with Memcached",
+        "ext-mysqli": "If you use MySQL",
+        "ext-oci8": "If you use Oracle Database",
+        "ext-pgsql": "If you use PostgreSQL",
+        "ext-readline": "Improves CLI::input() usability",
+        "ext-redis": "If you use Cache class RedisHandler",
+        "ext-simplexml": "If you format XML",
+        "ext-sodium": "If you use Encryption SodiumHandler",
+        "ext-sqlite3": "If you use SQLite3",
+        "ext-sqlsrv": "If you use SQL Server",
+        "ext-xdebug": "If you use CIUnitTestCase::assertHeaderEmitted()"
+    },
+    "require-dev": {
+        "fakerphp/faker": "^1.9",
+        "mikey179/vfsstream": "^1.6",
+        "phpunit/phpunit": "^10.5.16"
+    },
+    "autoload": {
+        "psr-4": {
+            "CodeIgniter\\": "system/",
+            "App\\": "app/"
+        },
+        "exclude-from-classmap": [
+            "**/Database/Migrations/**"
+        ]
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Tests\\Support\\": "tests/_support"
+        }
+    },
+    "config": {
+        "optimize-autoloader": false,
+        "preferred-install": "dist",
+        "sort-packages": true
+    },
+    "scripts": {
+        "test": "phpunit"
+    },
+    "minimum-stability": "dev",
+    "prefer-stable": true
+}

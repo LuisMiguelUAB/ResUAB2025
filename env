@@ -1,0 +1,319 @@
+#--------------------------------------------------------------------
+# Example Environment Configuration file
+#
+# This file can be used as a starting point for your own
+# custom .env files, and contains most of the possible settings
+# available in a default install.
+#
+# By default, all of the settings are commented out. If you want
+# to override the setting, you must un-comment it by removing the '#'
+# at the beginning of the line.
+#--------------------------------------------------------------------
+
+#--------------------------------------------------------------------
+# DOCKER
+#--------------------------------------------------------------------
+DOCKER__PROJECT_ID="intranet-uab-pt-v4"
+DOCKER__PROJECT_FOLDER="intranet-uab-pt-v4"
+DOCKER__PROJECT_NAME="Intranet UAb (v4)"
+
+DOCKER__WORK_DIR="/app/data"
+DOCKER__WWW_DIR="/app/data/www"
+DOCKER__PROJECT_URL="localhost"
+DOCKER__MYSQL_HOST="localhost"
+DOCKER__MYSQL_DATABASE="app_db"
+DOCKER__MYSQL_USER="app_db_user"
+DOCKER__MYSQL_PASSWORD="app_db_pwd"
+DOCKER__PHP_VERSION="8.1"
+
+DOCKER__PROJECT_ADMIN_USER="root"
+DOCKER__PROJECT_ADMIN_PWD="toor"
+DOCKER__PROJECT_ADMIN_EMAIL="cesperanc@gmail.com"
+DOCKER__ADDITIONAL_PACKAGES=""
+
+#--------------------------------------------------------------------
+# ENVIRONMENT
+#--------------------------------------------------------------------
+
+CI_ENVIRONMENT = development
+# CI_ENVIRONMENT = production
+
+#--------------------------------------------------------------------
+# APP
+#--------------------------------------------------------------------
+
+# If you have trouble with `.`, you could also use `_`.
+app.baseURL = 'http://${DOCKER__PROJECT_URL}/v4/'
+# app.forceGlobalSecureRequests = false
+# app.CSPEnabled = false
+
+
+#--------------------------------------------------------------------
+# TENANTS
+#--------------------------------------------------------------------
+# The following environment settings configure the multiple tenants feature.
+# The `app.tenants` setting is a comma-separated list of enabled tenant names.
+app.tenants = 'Intranet'
+# The `app.tenant` setting is a list of settings that are specific to each tenant. 
+# Example: The "Apps.Payments" relates to the tenant "Apps/Payments", and each tenant 
+# can share settings with other modules or not.
+app.tenant.Intranet = 'http://${DOCKER__PROJECT_URL}/v4/'
+
+#--------------------------------------------------------------------
+# LANGUAGE
+#--------------------------------------------------------------------
+app.defaultLocale="pt"
+app.negotiateLocale=false
+app.supportedLocales=pt,en
+app.appTimezone="Europe/Lisbon"
+
+#--------------------------------------------------------------------
+# DATABASE
+#--------------------------------------------------------------------
+
+database.default.hostname = ${DOCKER__MYSQL_HOST}
+database.default.database = ${DOCKER__MYSQL_DATABASE}
+database.default.username = ${DOCKER__MYSQL_USER}
+database.default.password = ${DOCKER__MYSQL_PASSWORD}
+database.default.DBDriver = MySQLi
+database.default.DBPrefix = tbl_
+database.default.port = 3306
+
+# If you use MySQLi as tests, first update the values of Config\Database::$tests.
+# database.tests.hostname = localhost
+# database.tests.database = ci4_test
+# database.tests.username = root
+# database.tests.password = root
+# database.tests.DBDriver = MySQLi
+# database.tests.DBPrefix =
+# database.tests.charset = utf8mb4
+# database.tests.DBCollat = utf8mb4_general_ci
+# database.tests.port = 3306
+
+#--------------------------------------------------------------------
+# Base URLs for the V4 theme
+#--------------------------------------------------------------------
+#Themes\UAbIntranetV4\Config\ThemeConfig.baseElementsUrl = '{base_url}/menuintranetv4/'
+#Themes\UAbIntranetV4\Config\ThemeConfig.checkLoginUrl = '{base_url}/login/saml/check'
+
+#--------------------------------------------------------------------
+# ENCRYPTION
+#--------------------------------------------------------------------
+
+# encryption.key =
+
+#--------------------------------------------------------------------
+# SESSION
+#--------------------------------------------------------------------
+
+# session.driver = 'CodeIgniter\Session\Handlers\FileHandler'
+# session.savePath = null
+
+#--------------------------------------------------------------------
+# LOGGER
+#--------------------------------------------------------------------
+
+# logger.threshold = 4
+
+#--------------------------------------------------------------------
+# CONTENT SECURITY POLICY
+#--------------------------------------------------------------------
+
+# contentsecuritypolicy.reportOnly = false
+# contentsecuritypolicy.defaultSrc = 'none'
+# contentsecuritypolicy.scriptSrc = 'self'
+# contentsecuritypolicy.styleSrc = 'self'
+# contentsecuritypolicy.imageSrc = 'self'
+# contentsecuritypolicy.baseURI = null
+# contentsecuritypolicy.childSrc = null
+# contentsecuritypolicy.connectSrc = 'self'
+# contentsecuritypolicy.fontSrc = null
+# contentsecuritypolicy.formAction = null
+# contentsecuritypolicy.frameAncestors = null
+# contentsecuritypolicy.frameSrc = null
+# contentsecuritypolicy.mediaSrc = null
+# contentsecuritypolicy.objectSrc = null
+# contentsecuritypolicy.pluginTypes = null
+# contentsecuritypolicy.reportURI = null
+# contentsecuritypolicy.sandbox = false
+# contentsecuritypolicy.upgradeInsecureRequests = false
+# contentsecuritypolicy.styleNonceTag = '{csp-style-nonce}'
+# contentsecuritypolicy.scriptNonceTag = '{csp-script-nonce}'
+# contentsecuritypolicy.autoNonce = true
+
+#--------------------------------------------------------------------
+# COOKIE
+#--------------------------------------------------------------------
+
+# cookie.prefix = ''
+# cookie.expires = 0
+# cookie.path = '/'
+# cookie.domain = ''
+# cookie.secure = false
+# cookie.httponly = false
+# cookie.samesite = 'Lax'
+# cookie.raw = false
+
+#--------------------------------------------------------------------
+# ENCRYPTION
+#--------------------------------------------------------------------
+
+# encryption.key =
+# encryption.driver = OpenSSL
+# encryption.blockSize = 16
+# encryption.digest = SHA512
+
+#--------------------------------------------------------------------
+# HONEYPOT
+#--------------------------------------------------------------------
+
+# honeypot.hidden = 'true'
+# honeypot.label = 'Fill This Field'
+# honeypot.name = 'honeypot'
+# honeypot.template = '<label>{label}</label><input type="text" name="{name}" value=""/>'
+# honeypot.container = '<div style="display:none">{template}</div>'
+
+#--------------------------------------------------------------------
+# SECURITY
+#--------------------------------------------------------------------
+
+# security.csrfProtection = 'cookie'
+# security.tokenRandomize = false
+# security.tokenName = 'csrf_token_name'
+# security.headerName = 'X-CSRF-TOKEN'
+# security.cookieName = 'csrf_cookie_name'
+# security.expires = 7200
+# security.regenerate = true
+# security.redirect = false
+# security.samesite = 'Lax'
+
+#--------------------------------------------------------------------
+# SESSION
+#--------------------------------------------------------------------
+
+# session.driver = 'CodeIgniter\Session\Handlers\FileHandler'
+# session.cookieName = 'ci_session'
+# session.expiration = 7200
+# session.savePath = null
+# session.matchIP = false
+# session.timeToUpdate = 300
+# session.regenerateDestroy = false
+
+#--------------------------------------------------------------------
+# LOGGER
+#--------------------------------------------------------------------
+
+# logger.threshold = 4
+
+#--------------------------------------------------------------------
+# CURLRequest
+#--------------------------------------------------------------------
+
+# curlrequest.shareOptions = true
+
+
+#--------------------------------------------------------------------
+# MAILER (Based on PHPMailer)
+#--------------------------------------------------------------------
+mailer.mailer.Host = '127.0.0.1'
+mailer.mailer.Port = 25
+# mailer.mailer.SMTPAuth = false
+# mailer.mailer.Username = ''
+# mailer.mailer.Password = ''
+# mailer.mailer.SMTPSecure = ''
+mailer.mailer.mailerMeta.from = 'UAb <noreply-intranet-v4@uab.pt>'
+#mailer.mailer.mailerMeta.replyTo = 'UAb <noreply-intranet-v4@uab.pt>
+#mailer.mailer.mailerMeta.cc = ''
+#mailer.mailer.mailerMeta.bcc = ''
+
+#--------------------------------------------------------------------
+# EMAIL (Based on CI Email)
+#--------------------------------------------------------------------
+email.protocol = 'smtp'
+email.SMTPHost = '127.0.0.1'
+email.SMTPPort = '25'
+# email.SMTPCrypto = 'tls'
+# email.SMTPUser = ''
+# email.SMTPPass = ''
+# email.replyTo = ''
+# email.Cc = ''
+# email.Bcc = ''
+email.fromName = 'Universidade Aberta'
+email.fromEmail = 'noreply-intranet-v4@uab.pt'
+# email.mailPath = '/usr/sbin/sendmail';
+# email.userAgent = 'no-reply@uab.pt'
+
+#--------------------------------------------------------------------
+# CAS Settings
+#--------------------------------------------------------------------
+cas.serverDisableValidation = true
+cas.debug = false
+cas.masterLogoutUrl = 'http://localhost/logout'
+cas.config.server_hostname = 'cas2.uab.pt'
+cas.config.server_port = 443
+cas.config.server_uri = '/cas'
+cas.config.service_base_url = ''
+cas.config.ca_cert_file = ''
+
+
+#--------------------------------------------------------------------
+# Auth Settings
+#--------------------------------------------------------------------
+auth.authMethod = 'cas' # cas | saml
+
+#--------------------------------------------------------------------
+# LDAP Settings
+#--------------------------------------------------------------------
+## Mandatory Configuration Options
+ldaprecord.config.hosts = '["127.0.0.1"]'
+ldaprecord.config.base_dn = 'ou=utilizadores,dc=univ-ab,dc=local'
+ldaprecord.config.username = 'bind_username'
+ldaprecord.config.password = 'bind_username_password'
+## Optional Configuration Options
+# ldaprecord.config.port = 389
+# ldaprecord.config.use_ssl = false
+# ldaprecord.config.use_tls = false
+# ldaprecord.config.use_sasl = false
+# ldaprecord.config.version = 3
+# ldaprecord.config.timeout = 5
+# ldaprecord.config.follow_referrals = false
+## Custom LDAP Options
+# ldaprecord.config.options = '{"LDAP_OPT_X_TLS_REQUIRE_CERT":"LDAP_OPT_X_TLS_HARD"}'
+## See: https://www.php.net/manual/en/function.ldap-sasl-bind.php
+# ldaprecord.config.sasl_options = '{"mech":null, "realm":null, "authc_id":null, "authz_id":null, "props":null }'
+## Field mapping
+ldaprecord.fields.uid = 'samaccountname'
+ldaprecord.fields.samaccountname = 'samaccountname'
+ldaprecord.fields.lastname = 'sn'
+ldaprecord.fields.firstname = 'givenname'
+ldaprecord.fields.fullname = 'cn'
+ldaprecord.fields.mail = 'mail'
+ldaprecord.fields.objectclass = 'objectclass'
+ldaprecord.fields.distinguishedname = 'distinguishedname'
+ldaprecord.fields.name = 'name'
+ldaprecord.fields.displayname = 'displayname'
+ldaprecord.fields.personprimaryaffiliation = 'edupersonprimaryaffiliation'
+ldaprecord.fields.title = 'title'
+
+
+
+#--------------------------------------------------------------------
+# FISI Settings
+#--------------------------------------------------------------------
+fisi.serverRoot = 'http://[IP]'
+fisi.username = 'fisi_user'
+fisi.password = ''
+# API endpoint
+fisi.endPointApi = '{-serverRoot-}/api'
+# Login endpoint
+fisi.endPointLogin = '{-serverRoot-}/auth/login'
+
+#--------------------------------------------------------------------
+# TcPDF Config 
+#--------------------------------------------------------------------
+tcpdf.pdfKeys.private = '-----BEGIN PRIVATE KEY-----\n[ENTER PRIVATE KEY]\n-----END PRIVATE KEY-----\n'
+tcpdf.pdfKeys.certificate = '-----BEGIN CERTIFICATE-----\n[ENTER CERTIFICATE]\n-----END CERTIFICATE-----\n'
+tcpdf.pdfKeys.passphrase = ''
+tcpdf.config.author = 'Universidade Aberta'
+tcpdf.config.creator = 'intranet.uab.pt'
+tcpdf.config.link = '--{ site_url }--'

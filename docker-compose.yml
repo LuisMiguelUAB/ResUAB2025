@@ -1,0 +1,66 @@
+services:
+  # intranet-v3:
+  #  extends:
+  #    file: ../intranet.uab.pt/docker-compose.yml
+  #    service: project
+  #  image: intranet-uab-pt-v3:latest
+  #  container_name: intranet-uab-pt-v3
+  intranet-v4:
+    build:
+      context: ./
+      dockerfile: Dockerfile
+      target: development
+      args: 
+        DOCKER__PROJECT_ID: ${DOCKER__PROJECT_ID:-"C3-project"}
+        DOCKER__PROJECT_FOLDER: ${DOCKER__PROJECT_FOLDER:-"C3-project-folder"}
+        DOCKER__PROJECT_NAME: ${DOCKER__PROJECT_NAME:-"C3 App"}
+        DOCKER__PROJECT_ADMIN_USER: ${DOCKER__PROJECT_ADMIN_USER:-"root"}
+        DOCKER__PROJECT_ADMIN_PWD: ${DOCKER__PROJECT_ADMIN_PWD:-"toor"}
+        DOCKER__PROJECT_ADMIN_EMAIL: ${DOCKER__PROJECT_ADMIN_EMAIL:-"cesperanc@gmail.com"}
+        DOCKER__WORK_DIR: ${DOCKER__WORK_DIR:-"/app/data"}
+        DOCKER__WWW_DIR: ${DOCKER__WWW_DIR:-"$DOCKER__WORK_DIR/www"}
+        DOCKER__PROJECT_URL: ${DOCKER__PROJECT_URL:-localhost}
+        DOCKER__MYSQL_HOST: ${DOCKER__MYSQL_HOST:-"localhost"}
+        DOCKER__MYSQL_DATABASE: ${DOCKER__MYSQL_DATABASE:-"app_db"}
+        DOCKER__MYSQL_USER: ${DOCKER__MYSQL_USER:-"app_db_user"}
+        DOCKER__MYSQL_PASSWORD: ${DOCKER__MYSQL_PASSWORD:-"app_db_pwd"}
+        DOCKER__PHP_VERSION: ${DOCKER__PHP_VERSION:-"8.1"}
+        DOCKER__ADDITIONAL_PACKAGES: ${DOCKER__ADDITIONAL_PACKAGES}
+    image: ${DOCKER__PROJECT_ID}:latest
+    working_dir: ${DOCKER__WWW_DIR}/${DOCKER__PROJECT_FOLDER}/
+    restart: unless-stopped
+    #privileged: true
+    container_name: ${DOCKER__PROJECT_ID}
+    #user: "root"
+    volumes:
+      - .:${DOCKER__WWW_DIR}/${DOCKER__PROJECT_FOLDER}
+      # - ${DOCKER__WWW_DIR}/${DOCKER__PROJECT_FOLDER}/.docker
+      # - type: bind
+      #   source: ./.docker/www
+      #   target: ${DOCKER__WORK_DIR}/mirror/www
+      #   bind:
+      #     propagation: shared
+      # #- fs_data:${DOCKER__WWW_DIR}:rw
+      - db_data_v4:/var/lib/mysql
+    ports:
+      - "80:80"
+      - "443:443"
+    #networks:
+    #  site:
+    extra_hosts:
+      - "localhost.localdomain:127.0.0.5"
+      - "dev-apps.local:127.0.0.6"
+
+# networks:
+#   site:
+#     driver: bridge
+#     ipam:
+#       driver: default
+#       config:
+#       -
+#         subnet: 10.30.2.1/30
+
+volumes:
+  db_data:
+  db_data_v4:
+  #fs_data:

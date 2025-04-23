@@ -1,0 +1,3 @@
+[submodule "app/themes/UAbIntranetV4/Assets/3rd-party/AdminLTE/source"]
+	path = app/themes/UAbIntranetV4/Assets/3rd-party/AdminLTE/source
+	url = https://github.com/ColorlibHQ/AdminLTE.git
